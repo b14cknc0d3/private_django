@@ -305,11 +305,13 @@ class AbstractUser(AbstractBaseUser, PermissionsMixin):
             'unique': _("A user with that username already exists."),
         },
     )
+    phone = models.CharField(_('phone number'), max_length=30, blank=True)
+    address = models.CharField(_('reseller address'), max_length=220, blank=True)
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
     email = models.EmailField(_('email address'), blank=True)
     is_reseller = models.BooleanField(
-        _('staff status'),
+        _('reseller status'),
         default=False,
         help_text=_('Designates whether the user can log into this admin site.'),
     )
